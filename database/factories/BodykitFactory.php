@@ -21,7 +21,7 @@ class BodykitFactory extends Factory
         $shop = BodykitShop::all()->random();
 
         return [
-            'version' => $shapes[array_rand($versions)],
+            'version' => $versions[array_rand($versions)],
             'name' => $this->faker->unique()->text(10),
             'manufacture_year' => $this->faker->year(),
             'bodykit_shop_id' => $shop->id,

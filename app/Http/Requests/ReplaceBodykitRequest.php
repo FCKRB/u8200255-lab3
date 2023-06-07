@@ -17,7 +17,7 @@ class ReplaceBodykitRequest extends FormRequest
      */
     public function rules(): array
     {
-        $versionss = ['RoketBunny', 'Buddy Club', ' Top-Tuning'];
+        $versions = ['RoketBunny', 'Buddy Club', ' Top-Tuning'];
         return [
             'version' => ['required', 'string', Rule::in($versions)],
             'name' => ['required', 'string'],

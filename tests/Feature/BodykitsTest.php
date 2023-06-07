@@ -85,7 +85,7 @@ it('bodykits/ POST version validation', function() {
     $response = $this->postJson('/api/v1/bodykits', [
         'name' => 'Top-Tuning',
         'manufacture_year' => 2006,
-        'bodykit_shop_id' => bodykit_shop->id,
+        'bodykit_shop_id' => $bodykit_shop->id,
     ]);
     $response->assertStatus(400);
 
@@ -125,8 +125,6 @@ it('bodykits/{id} DELETE incorrect id', function() {
 it('bodykits/{id} PUT correct id', function() {
     $bodykit_shop = BodykitShop::factory()->createOne();
     $bodykit_shop->save();
-
-    ['RoketBunny', 'Buddy Club', ' Top-Tuning'];
 
     $bodykit = new Bodykit(['version' => 'Honda CR-Z',
                           'name' => 'Buddy Club',

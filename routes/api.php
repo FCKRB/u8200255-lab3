@@ -21,15 +21,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'v1'], function() {
-    Route::get('/guitars', [BodykitController::class, 'getAll']);
-    Route::post('/guitars', [BodykitController::class, 'create']);
+    Route::get('/bodykits', [BodykitController::class, 'getAll']);
+    Route::post('/bodykits', [BodykitController::class, 'create']);
 
-    Route::get('/guitars/{guitarId}', [BodykitController::class, 'get']);
-    Route::put('/guitars/{guitarId}', [BodykitController::class, 'replace']);
-    Route::patch('/guitars/{guitarId}', [BodykitController::class, 'update']);
-    Route::delete('/guitars/{guitarId}', [BodykitController::class, 'delete']);
+    Route::get('/bodykits/{bodykitId}', [BodykitController::class, 'get']);
+    Route::put('/bodykits/{bodykitId}', [BodykitController::class, 'replace']);
+    Route::patch('/bodykits/{bodykitId}', [BodykitController::class, 'update']);
+    Route::delete('/bodykits/{bodykitId}', [BodykitController::class, 'delete']);
 
-    Route::get('/guitar-shops', [BodykitShopController::class, 'getAll']);
-    Route::get('/guitar-shops/{guitarShopId}', [BodykitShopController::class, 'get']);
-    Route::post('/guitar-shops', [BodykitShopController::class, 'create']);
+    Route::get('/bodykit-shops', [BodykitShopController::class, 'getAll']);
+    Route::get('/bodykit-shops/{bodykitShopId}', [BodykitShopController::class, 'get']);
+    Route::post('/bodykit-shops', [BodykitShopController::class, 'create']);
 });

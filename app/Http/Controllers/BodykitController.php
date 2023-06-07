@@ -34,16 +34,6 @@ class BodykitController extends Controller
         return new BodykitResource($action->execute($request->validated()));
     }
 
-    public function delete(int $bodykitId, DeleteBodykitAction $action)
-    {
-        try {
-            $action->execute($bodykitId);
-            return response()->json(["code" => 200,"message" => "Bodykit deleted"]);
-        } catch(ModelNotFoundException) {
-            return response()->json(["code" => 404, "message" => "Bodykit not found"], 404);
-        }
-    }
-
     public function replace(int $bodykitId, ReplaceBodykitRequest $request, ReplaceBodykitAction $action)
     {
         try {
@@ -58,6 +48,16 @@ class BodykitController extends Controller
         try {
             return new BodykitResource($action->execute($bodykitId, $request->validated()));
         } catch (ModelNotFoundException) {
+            return response()->json(["code" => 404, "message" => "Bodykit not found"], 404);
+        }
+    }
+
+    public function delete(int $bodykitId, DeleteBodykitAction $action)
+    {
+        try {
+            $action->execute($bodykitId);
+            return response()->json(["code" => 200,"message" => "Bodykit deleted"]);
+        } catch(ModelNotFoundException) {
             return response()->json(["code" => 404, "message" => "Bodykit not found"], 404);
         }
     }

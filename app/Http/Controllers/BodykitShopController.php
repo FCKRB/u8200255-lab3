@@ -11,6 +11,11 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BodykitShopController extends Controller
 {
+
+    public function create(CreateBodykitShopRequest $request, CreateBodykitShopAction $action)
+    {
+        return new BodykitShopResource($action->execute($request->validated()));
+    }
     public function getAll()
     {
         return BodykitShopResource::collection(BodykitShop::all());
@@ -23,11 +28,6 @@ class BodykitShopController extends Controller
         } catch(ModelNotFoundException) {
             return response()->json(["code" => 404,"message" => "Bodykit shop not found"], 404);
         }
-    }
-
-    public function create(CreateBodykitShopRequest $request, CreateBodykitShopAction $action)
-    {
-        return new BodykitShopResource($action->execute($request->validated()));
     }
 
     public function update(int $shelterId, UpdateBodykitShopRequest $request, UpdateAnimalShelterAction $action)
